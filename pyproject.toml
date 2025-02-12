@@ -1,0 +1,51 @@
+[project]
+name = "truffle-sdk"
+version = "0.6.4"
+description = "Truffle SDK for building AI-powered tools"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    {name = "Truffle Team", email = "team@truffle.ai"}
+]
+
+dependencies = [
+    "grpcio>=1.69.0",
+    "grpcio-reflection>=1.69.0",
+    "protobuf>=5.29.3",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+    "tomli>=2.2.1",
+    "tomli-w>=1.2.0",
+    "typer>=0.15.1",
+    "pydantic>=2.0.0",
+    "jinja2>=3.0.0",
+]
+
+[project.scripts]
+truffle = "truffle.cli:main"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = ["-ra", "-q", "--strict-markers", "--strict-config", "--doctest-modules"]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test", "Acceptance"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow",
+    "integration: marks tests as integration tests",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
