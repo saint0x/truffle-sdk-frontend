@@ -103,6 +103,10 @@ class Logger:
         self._indent_size: int = 2
         self._indent_cache: Dict[int, str] = {}
     
+    def group(self, message: str, emoji: Optional[str] = None) -> 'LoggerGroup':
+        """Create a log group with increased indentation."""
+        return LoggerGroup(self, message, emoji)
+
     def _indent(self) -> str:
         """Generate indentation string based on current level."""
         if self._indent_level not in self._indent_cache:
@@ -228,3 +232,22 @@ class Logger:
 
 # Global logger instance
 log = Logger() 
+
+class LoggerGroup:
+    """Context manager for grouped log messages."""
+    
+    def __init__(self, logger: Logger, message: str, emoji: Optional[str] = None):
+        self.logger = logger
+        self.message = message
+        self.emoji = emoji
+    
+    def __enter__(self) -> Logger:
+        if self.emoji:
+            self.logger.info(self.message, emoji=self.emoji)
+        else:
+            self.logger.info(self.message)
+        self.logger._indent_level += 1
+        return self.logger
+    
+    def __exit__(self, exc_type, exc_val, exc_tb) -> None:
+        self.logger._indent_level -= 1 

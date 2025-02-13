@@ -31,8 +31,8 @@ import ast
 import importlib.util
 from typing import Optional, List
 
-from utils.logger import log, Symbols
-from templates.validation import validate_main_py
+from ..utils.logger import log, Symbols
+from ..templates.validation import validate_main_py
 
 class MethodVisitor(ast.NodeVisitor):
     """AST visitor that finds methods decorated with 'truffle.tool'"""

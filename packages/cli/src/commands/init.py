@@ -31,11 +31,11 @@ import shutil
 import uuid
 from typing import Optional, List
 
-from utils.logger import log, Symbols
-from templates.generator import (
+from ..utils.logger import log, Symbols
+from ..templates.app import (
     generate_main_py,
     generate_manifest,
-    generate_requirements
+    write_app_files
 )
 
 def init(
@@ -105,18 +105,10 @@ def init(
                 log.created_file(file)
             
             # Create files
-            (proj_path / "main.py").write_text(
-                generate_main_py(project_name, manifest_data)
-            )
-            (proj_path / "manifest.json").write_text(
-                json.dumps(manifest_data, indent=4, sort_keys=True, ensure_ascii=False)
-            )
-            (proj_path / "requirements.txt").write_text(
-                generate_requirements("0.6.5")
-            )
+            write_app_files(proj_path, project_name, manifest_data, "0.6.5")
             
             # Copy icon
-            icon_src = Path(__file__).parent.parent / "cli_assets" / "default_app.png"
+            icon_src = Path(__file__).parent.parent / "assets" / "default_app.png"
             shutil.copy(icon_src, proj_path / "icon.png")
             
             # Success message

@@ -29,8 +29,8 @@ from pathlib import Path
 import zipfile
 from typing import Optional
 
-from utils.logger import log, Symbols
-from templates.validation import (
+from ..utils.logger import log, Symbols
+from ..templates.validation import (
     validate_main_py,
     validate_manifest,
     validate_requirements

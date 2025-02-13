@@ -1,8 +1,39 @@
 # Truffle SDK
 
-Core SDK and CLI tools for the Truffle AI platform.
+Core SDK and CLI tools.
 
-## Structure
+## Usage
+
+### Creating a New Project
+
+1. Initialize a new project:
+   ```bash
+   truffle init MyApp
+   ```
+   This will create a new project with:
+   - `main.py` - Your tool implementation
+   - `manifest.json` - Project configuration
+   - `requirements.txt` - Dependencies
+   - `icon.png` - Default app icon
+
+2. Build your project:
+   ```bash
+   cd MyApp
+   truffle build
+   ```
+   This will create a `.truffle` package ready for distribution.
+
+### Project Structure
+
+```
+MyApp/
+├── main.py              # Tool implementation
+├── manifest.json        # Project configuration
+├── requirements.txt     # Dependencies
+└── icon.png            # App icon
+```
+
+## Repository Structure
 
 ```
 packages/
@@ -43,3 +74,11 @@ packages/
 - Refactor Details: `REFACTOR-VERIFY.md`
 - API Documentation: `/packages/sdk/docs/`
 - CLI Usage: `/packages/cli/docs/`
+
+## Version
+
+Current stable version: 1.0.0
+
+## License
+
+MIT
