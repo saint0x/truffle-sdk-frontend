@@ -40,6 +40,5 @@ packages/
 
 ## Documentation
 
-- Refactor Details: `REFACTOR-VERIFY.md`
 - API Documentation: `/packages/sdk/docs/`
 - CLI Usage: `/packages/cli/docs/`
