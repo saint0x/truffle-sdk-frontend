@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.scripts]
-truffle = "truffle_sdk_frontend.cli:main"
+truffle = "packages.cli.src.main:main"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -52,6 +52,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build]
 packages = ["packages"]
+package-dir = {"truffle_sdk_frontend" = "packages"}
 exclude = [
     "tests",
     "docs",

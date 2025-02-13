@@ -2,7 +2,6 @@
 Truffle SDK
 
 A Python SDK for interacting with Truffle's AI platform.
-Based on deprecated SDK version 0.5.3.
 """
 
 from .client.grpc import GRPCClient
@@ -24,7 +23,7 @@ from .types.responses import (
     EmbedResponse
 )
 
-__version__ = "0.5.3"
+__version__ = "0.6.5"
 
 __all__ = [
     # Client
